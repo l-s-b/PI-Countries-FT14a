@@ -21,15 +21,38 @@ server.use((_req, res, next) => {
   next();
 });
 
+const activities = [{
+  'id': 2,
+  'name': 'Dummy Activity',
+  'difficulty': '🥵🥵⚫⚫⚫',
+  'elapsed-time': 30,
+  'season': 'All',
+}];
+
 server.use('/', routes);
 
-//Routes!
-
+// Main route (Promise style)
 server.get('/countries', (req, res) => {
   axios.get('https://restcountries.eu/rest/v2/all')
     .then(response => res.json(response.data))
+    .catch(error => res.status(500).json({error: 'Error 500: Cannot fetch API.'}));
+})
+
+/* This is not working...
+server.get('/activities', (req, res) => {
+  axios.get('https://localhost:3001/activities')
+    .then(response => { res.json([...activities])})
     .catch(error => res.status(500).json({error: 'Error 500: Cannot fetch API.'}))
 })
+*/
+
+
+//Country Detail (Async function) (NOT wORKING)
+server.get('/countries/:alpha3Code', async (req, res) => {
+  const country = await axios.get(`https://restcountries.eu/rest/v2/alpha/${req.params.alpha3Code}`);
+    res.json(country.data);
+})
+
 
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
