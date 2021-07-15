@@ -1,9 +1,11 @@
 const { Router } = require('express');
 const axios = require('axios').default;
+const cors = require('cors');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
+router.get(cors());
 
 const activities = [{
     'id': 2,
