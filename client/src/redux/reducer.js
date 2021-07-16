@@ -14,7 +14,10 @@ function reducer(state = initialState, action) {
             }
         }
         case GET_COUNTRY_BY_ALPHA: {
-            return state;
+            return {
+                ...state,
+                country: action.payload
+            }
         }
         case POST_CUSTOM_COUNTRY: {
             return state;

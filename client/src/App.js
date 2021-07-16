@@ -1,24 +1,21 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCountries } from './redux/actions';
-import './App.css';
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import "./App.css";
+import NavBar from "./components/NavBar";
+import { Route } from "react-router";
+import Countries from "./components/Countries";
+import Footer from "./components/Footer";
+import CountryDetail from "./components/CountryDetail";
+import { useParams } from 'react-router-dom';
 
 function App() {
-  const dispatch = useDispatch();
-  const countries = useSelector(state => state.countries); // Mapping
-  useEffect(() => { dispatch(getCountries()) }, [dispatch])
-  console.log(countries.map(c => <img src="c.flag"></img>));
+
   return (
-    <div className="App">
+    <div classname='App'>
       <NavBar />
-      <h1>Henry Countries</h1>
-      <div>{countries.map(c => <img src={c.flag} />)}</div>
+      <Route exact path='/' component={Countries} />
+      <Route exact path={'/countries/:alpha3Code'} component={CountryDetail} />
       <Footer />
     </div>
   );
-
 }
 
 export default App;
