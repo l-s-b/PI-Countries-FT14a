@@ -4,7 +4,6 @@ import { Route } from "react-router";
 import Countries from "./components/Countries";
 import Footer from "./components/Footer";
 import CountryDetail from "./components/CountryDetail";
-import { useParams } from 'react-router-dom';
 
 function App() {
 
@@ -12,7 +11,7 @@ function App() {
     <div classname='App'>
       <NavBar />
       <Route exact path='/' component={Countries} />
-      <Route exact path={'/countries/:alpha3Code'} component={CountryDetail} />
+      <Route exact path='/countries/:alpha3Code' component={CountryDetail} />
       <Footer />
     </div>
   );
