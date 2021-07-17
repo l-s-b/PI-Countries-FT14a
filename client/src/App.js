@@ -8,7 +8,7 @@ import CountryDetail from "./components/CountryDetail";
 function App() {
 
   return (
-    <div classname='App'>
+    <div className='App'>
       <NavBar />
       <Route exact path='/' component={Countries} />
       <Route exact path='/countries/:alpha3Code' component={CountryDetail} />

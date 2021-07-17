@@ -1,4 +1,6 @@
 import axios from 'axios';
+import React from 'react';
+import OtherError from '../components/OtherError';
 
 export const GET_ALL = "GET_ALL";
 export const GET_COUNTRY_BY_ALPHA = "GET_COUNTRY_BY_ALPHA";
@@ -27,7 +29,13 @@ export function getCountry(alpha3Code) {
                     type: GET_COUNTRY_BY_ALPHA,
                     payload: response.data
                 })
+            }).catch(error => {
+                if(error.response?.status !== '404') {< OtherError /> }
+            dispatch({
+                type: GET_COUNTRY_BY_ALPHA,
+                payload: null
             })
+        })
     }
 };
 

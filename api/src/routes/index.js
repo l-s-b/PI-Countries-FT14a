@@ -103,7 +103,7 @@ try {
     if(error.response?.status === 404) {
         const country = customCountries.find(c => c.alpha3Code === req.params.alpha3Code);
         if(country) return res.json(country); // Alas, does not work using ternary operator.
-        return res.statusCode(404);
+        return res.status(404).json({error: 'Error 404: There is no country for the specified alpha3Code.'});
     };
     res.status(500).json({error: 'Error 500: Cannot fetch API.'});
 }
