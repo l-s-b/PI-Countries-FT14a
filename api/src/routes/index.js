@@ -1,17 +1,19 @@
 const { Router } = require('express');
 const axios = require('axios').default;
 const cors = require('cors');
-// Importar todos los routers;
+// WHEN IT'S ALL SET, CREATE ROUTES AND IMPORT THEM HERE
 // Ejemplo: const authRouter = require('./auth.js');
 
 const router = Router();
 router.get(cors());
 
+
+// CREATE AN ACTIVITY AND REMOVE THIS:
 const activities = [{
     'id': 2,
     'name': 'Dummy Activity',
     'difficulty': '🥵🥵⚫⚫⚫',
-    'elapsed-time': 30,
+    'estimated-time': 30,
     'season': 'All',
   }];
 
@@ -101,9 +103,11 @@ try {
     res.json(country.data);
 } catch(error) {
     if(error.response?.status === 404) {
+      // Country.findByPk(req.params.alpha3Code).then(country => if(country) return res.json(country);
+      // return res.status(404).json({error: 'Error 404: There is no country for the specified alpha3Code.'});)
         const country = customCountries.find(c => c.alpha3Code === req.params.alpha3Code);
         if(country) return res.json(country); // Alas, does not work using ternary operator.
-        return res.status(404).json({error: 'Error 404: There is no country for the specified alpha3Code.'});
+        return res.sendStatus(404);
     };
     res.status(500).json({error: 'Error 500: Cannot fetch API.'});
 }
