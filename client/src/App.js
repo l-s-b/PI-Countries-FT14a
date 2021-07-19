@@ -1,18 +1,28 @@
-import "./App.css";
-import NavBar from "./components/NavBar";
+import "./css/App.css";
+import "./css/NavBar.css";
+import "./css/Footer.css";
 import { Route } from "react-router";
 import Countries from "./components/Countries";
+import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import CountryDetail from "./components/CountryDetail";
+import LP from "./views/LP";
+import AddActivity from "./views/AddActivity";
+import AddCountry from "./views/AddCountry";
 
 function App() {
 
   return (
     <div className='App'>
+      <div className='wrap'>
       <NavBar />
-      <Route exact path='/' component={Countries} />
+      <Route exact path='/' component={LP} />
+      <Route exact path='/main' component={Countries} />
       <Route exact path='/countries/:alpha3Code' component={CountryDetail} />
-      <Footer />
+      <Route exact path='/add-activity' component={ AddActivity } />
+      <Route exact path='/add-country' component={ AddCountry } />
+      </div>
+      <Footer className='Footer' />
     </div>
   );
 }

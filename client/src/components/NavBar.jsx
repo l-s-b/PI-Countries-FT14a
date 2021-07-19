@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = function() {
-    return (<>
-    <h2>This is the NavBar!</h2>
-    </>);
+    return (<div className='Nav'>
+    <Link to= '/main'>Henry Countries</Link>
+    <Link className='link' to= '/activities'>Touristic Activities</Link>
+    <Link className='link' to= '/add-country'>Add Custom Country</Link>
+    <Link className='link' to= '/add-activity'>Add New Activity</Link>
+    </div>);
 }
 
 export default NavBar;

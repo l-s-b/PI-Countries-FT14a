@@ -14,14 +14,13 @@ function Countries() {
 
     return (
       <div className="countries">
-      <h1>Henry Countries</h1>
         {!countries ? (
           <img src={waitgif} alt=''/>
         ) : (
           countries.map((c) => (
             <Link to={`/countries/${c.alpha3Code}`}>
               <h2>{c.name}</h2>
-              <img src={c.flag} alt=''/>
+              <img className='flag' src={c.flag} alt=''/>
               <p>Region: {c.region}</p>
             </Link>
           ))
