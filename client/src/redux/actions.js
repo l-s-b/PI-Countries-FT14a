@@ -2,8 +2,9 @@ import axios from 'axios';
 import React from 'react';
 import OtherError from '../components/OtherError';
 
-export const GET_ALL = "GET_ALL";
+export const GET_COUNTRIES = "GET_COUNTRIES";
 export const GET_COUNTRY_BY_ALPHA = "GET_COUNTRY_BY_ALPHA";
+export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const POST_CUSTOM_COUNTRY = "POST_CUSTOM_COUNTRY";
 export const POST_ACTIVITY = "POST_ACTIVITY";
 
@@ -13,7 +14,7 @@ export function getCountries() {
         axios.get('http://localhost:3001/countries')
             .then(response => {
                 dispatch({
-                    type: GET_ALL,
+                    type: GET_COUNTRIES,
                     payload: response.data
                 })
             })
@@ -36,6 +37,19 @@ export function getCountry(alpha3Code) {
                 payload: null
             })
         })
+    }
+};
+
+// Activity list Action (Promise style)
+export function getActivities() {
+    return (dispatch) => {
+        axios.get('http://localhost:3001/activities')
+            .then(response => {
+                dispatch({
+                    type: GET_ACTIVITIES,
+                    payload: response.data
+                })
+            })
     }
 };
 

@@ -1,19 +1,37 @@
 const { Router } = require('express');
 const axios = require('axios').default;
 const cors = require('cors');
-// Importar todos los routers;
-// Ejemplo: const authRouter = require('./auth.js');
+const { Country, Activity } = require('../db');
+// Importing all routers
+/*const activities = require('./activities');
+const countries = require('./countries');
+const countryDetail = require('./countrydetail');
+Yet they are still empty. Maybe refactor later.*/
 
 const router = Router();
 router.get(cors());
 
+
+// CREATING AND PRELOADING ACTIVITIES AND A CUSTOM NATION:
 const activities = [{
-    'id': 2,
     'name': 'Dummy Activity',
     'difficulty': '🥵🥵⚫⚫⚫',
-    'elapsed-time': 30,
-    'season': 'All',
-  }];
+    'estimated_time': 2,
+    'season': 'All seasons',
+  },
+  {
+    'name': 'Survive the war',
+    'difficulty': '🥵🥵🥵🥵🥵',
+    'estimated_time': 99999,
+    'season': 'All seasons',
+  },
+  {
+    'name': 'Beach Party',
+    'difficulty': '🥵⚫⚫⚫⚫',
+    'estimated_time': 10,
+    'season': 'Summer',
+  }
+];
 
   const customCountries = [
     {
@@ -84,15 +102,18 @@ router.get('/countries', (req, res) => {
     axios.get('https://restcountries.eu/rest/v2/all')
       .then(response => {res.json([...response.data, ...customCountries])})
       .catch(error => res.status(500).json({error: 'Error 500: Cannot fetch API.'}));
-})
+});
 
-/* THIS IS NOT WORKING:
+ //THIS IS NOT WORKING:
 router.get('/activities', (req, res) => {
-    axios.get('https://localhost:3001/activities')
-      .then(response => { res.json([...activities])})
-      .catch(error => res.status(500).json({error: 'Error 500: Cannot fetch API.'}))
-})
- */
+    axios.get('https://dadada/')
+      .then(response => { res.json([response.data])})
+      .catch(error => {
+        res.json(activities);
+        res.status(500).json({error: 'Cannot fetch API.'})
+      })
+});
+
 
 //Country Detail (Async function)
 router.get('/countries/:alpha3Code', async (req, res) => {

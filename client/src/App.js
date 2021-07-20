@@ -9,6 +9,7 @@ import CountryDetail from "./components/CountryDetail";
 import LP from "./views/LP";
 import AddActivity from "./views/AddActivity";
 import AddCountry from "./views/AddCountry";
+import Activities from "./components/Activities";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <NavBar />
       <Route exact path='/' component={LP} />
       <Route exact path='/main' component={Countries} />
+      <Route exact path='/activities' component={Activities} />
       <Route exact path='/countries/:alpha3Code' component={CountryDetail} />
       <Route exact path='/add-activity' component={ AddActivity } />
       <Route exact path='/add-country' component={ AddCountry } />
