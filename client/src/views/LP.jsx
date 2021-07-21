@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LP = function() {
-    return (<>
-    <h2>Hey! I'm the Landing Page.</h2>
-    <Link to= '/main'>Wanna enter the site?</Link>
-    </>);
+    return (<div className= 'LP'>
+    <h2 className='h2'>Welcome to Henry countries</h2>
+    <Link to= '/main'><button className='btn'>Take a look!</button></Link>
+    </div>);
 }
 
 export default LP;

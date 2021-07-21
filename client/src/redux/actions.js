@@ -8,10 +8,12 @@ export const GET_ACTIVITIES = "GET_ACTIVITIES";
 export const POST_CUSTOM_COUNTRY = "POST_CUSTOM_COUNTRY";
 export const POST_ACTIVITY = "POST_ACTIVITY";
 
+const baseURL = process.env.REACT_APP_API || "http://localhost:3001";
+
 // Country list Action (Promise style)
 export function getCountries() {
     return (dispatch) => {
-        axios.get('http://localhost:3001/countries')
+        axios.get(`${baseURL}/countries`)
             .then(response => {
                 dispatch({
                     type: GET_COUNTRIES,
@@ -24,7 +26,7 @@ export function getCountries() {
 // Country detail action (Promise style)
 export function getCountry(alpha3Code) {
     return (dispatch) => {
-        axios.get(`http://localhost:3001/countries/${alpha3Code}`)
+        axios.get(`${baseURL}/countries/${alpha3Code}`)
             .then(response => {
                 dispatch({
                     type: GET_COUNTRY_BY_ALPHA,
@@ -43,7 +45,7 @@ export function getCountry(alpha3Code) {
 // Activity list Action (Promise style)
 export function getActivities() {
     return (dispatch) => {
-        axios.get('http://localhost:3001/activities')
+        axios.get(`${baseURL}/activities`)
             .then(response => {
                 dispatch({
                     type: GET_ACTIVITIES,

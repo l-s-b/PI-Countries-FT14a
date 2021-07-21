@@ -1,7 +1,7 @@
 .App {
   position: relative;
   text-align: center;
-  background-color: #c8d3e9;
+  background-color: rgb(247, 247, 247);
   min-height: 100vh;
 }
 
@@ -9,27 +9,67 @@
 padding-bottom: 2.5rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .flag {
   min-height: 15rem;
   max-height: 15rem;
+}
+
+.h2 {
+  font-size: 4rem;
+  color: antiquewhite;
+  padding-top: 0%;
+  margin: 0%;
+}
+
+.LP {
+    background-image: url('https://cdn.dribbble.com/users/933389/screenshots/4859260/orbit.gif');
+    height: 100vh;
+    width: 100%;
+    background-position: center;
+    opacity: 80%;
+    padding:0;
+    margin:0;
+}
+
+.btn {
+background-color: black;
+color: antiquewhite;
+padding: 10px;
+font-size: 2rem;
+border-radius: 5px;
+margin: 40px;
+}
+
+.link {
+  text-decoration: none;
+}
+.link:link {
+  color: antiquewhite;
+}
+.link:visited {
+  color: darkkhaki;
+}
+.link:hover {
+  color: aquamarine;
+}
+
+.home {
+  text-shadow: black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.country {
+  padding: 20px;
+  margin: 10px;
+  background-color: #282c34;
+  color: antiquewhite;
+  border-radius: 20px;
+  border-width: 5px;
+  border-color: gray;
+  border-style: solid;
 }

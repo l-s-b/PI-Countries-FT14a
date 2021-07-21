@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCountry, clearDetail } from "../redux/actions";
 import { Link, useParams } from "react-router-dom";
-import Error404 from "./Error404";
+import Error404 from '../components/Error404';
 
 function CountryDetail() {
   const dispatch = useDispatch();
